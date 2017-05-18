@@ -11,10 +11,18 @@ export class TankComponent implements OnInit {
 
   tank: Object;
 
-  constructor() { }
+  constructor(
+    private tankService: TankService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-  
+    console.log(this.activatedRoute.snapshot.params['id']);
+    
   }
 
+  getTanks() {
+      //this.tankService.get
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../books/book.service';
 import { TankService } from '../tanks/tank.service';
+import { UserService } from '../users/user.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private tankService: TankService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.getBooks();
     this.getTanks();
+    this.getUsers();
   }
 
   getBooks() {
@@ -31,6 +34,11 @@ export class HomeComponent implements OnInit {
   getTanks() {
     this.tankService.getTanks().then((resp) => {
       this.tanks = resp;
+    });
+  }
+  getUsers() {
+    this.userService.getUsers().then((resp) => {
+      this.users = resp;
     });
   }
 
